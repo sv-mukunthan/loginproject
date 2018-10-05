@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    </head>
+    <body>
+        <h2 class="w3-text-blue">Login Form</h2>
+      <p>
+        <label class="w3-text-blue"><b>User Name</b></label>
+        <input class="w3-input w3-border" name="name" type="text" id ="uname"></p>
+        <p>
+        <label class="w3-text-blue" id = "pass"><b>Password</b></label>
+        <input class="w3-input w3-border" name="pass" type="text" id ="upass"></p>
+        <p>
+        <button class="w3-btn w3-blue" id="loginForm">Login</button></p>
+
+        <script type="text/javascript">
+                 $("#loginForm").click(function(){
+        console.log("login btn");
+         var uname  = $("#uname").val();
+         var upass = $("#upass").val();
+         var loginData ={'name': uname,'pass':upass};
+         $.ajax({
+             type : 'POST',
+             url : '/demo',
+             data : loginData,
+             success: function(data){
+             $("#mainDiv").html(data);
+             }
+           });
+       });
+        </script>
+
+    </body>
+    </html>
